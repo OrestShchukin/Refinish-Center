@@ -17,6 +17,7 @@
     --main-headling-size: 1.3rem;
     --header-height: 90px;
     --header-padding: 2vw ;
+    
     --nav-active-width: 60vw;
     --gallery-height:100vh;
     --gallery-height-half:50vh;
@@ -465,15 +466,53 @@ header{
 }
 
 .review-more-button{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: calc(var(--review-width)/9);
-    height: 7vh;
-    background-color: #3EAE99;
+    width: 60%;
+    height: 40px;
+    background-color: #3eae99d0;
     border-radius: 10px;
     margin: 5px;
     align-self: flex-end;
+    transition: all .15s linear ;
+    box-shadow: 0;
+    overflow: hidden;
+}
+.review-more-button:after{
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: " ";
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-color: white;
+    transform: translateY(-100%);
+    transition: all .15s cubic-bezier(0.075, 0.82, 0.165, 1) 0.12s ;
+}
+
+.review-more-button:before{
+    transform: translateY(100%);
+}
+.review-more-button:hover{
+    background-color: #3eae99ed;
+    color: black;
+}
+
+.review-more-button:hover:after{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.review-more-button p{
+    z-index: 10;
+    color: white;
+    transition: all .15s linear;
+}
+.review-more-button:hover p{
+    color: black;
 }
 /* Slider triple ends */
 
