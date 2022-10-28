@@ -115,24 +115,47 @@ questionAndAnwer();
 
 // slider triple starts
 const reviewBlock = () => {
+    let objectsOnPage = 2;
+    if (window.innerWidth < 500){
+        objectsOnPage = 1;
+    }
     const reviewButtonLeft = document.querySelector('.review-button-left');
     const reviewButtonRight = document.querySelector('.review-button-right');
     const reviewContainer = document.querySelector('.review-container');
     const reviewContainerInner = document.querySelector('.review-container-inner');
     let reviewElements = document.querySelectorAll('.review-element');
-    const reviewSlidingWidth = (reviewContainer.clientWidth)/3;
+    const reviewSlidingWidth = (reviewContainer.clientWidth)/objectsOnPage;
     let reviewElementsLength = reviewElements.length;
 
-    let reviewCounter = 3;
-    const reviewFirstDuplicate = reviewElements[0].cloneNode(true);
-    const reviewSecondDuplicate = reviewElements[1].cloneNode(true);
-    const reviewThirdDuplicate = reviewElements[2].cloneNode(true);
-    const reviewPrePreLastDuplicate  = reviewElements[reviewElements.length - 3].cloneNode(true);
-    const reviewPreLastDuplicate  = reviewElements[reviewElements.length - 2].cloneNode(true);
-    const reviewLastDuplicate = (reviewElements[reviewElements.length - 1]).cloneNode(true);
-    reviewContainerInner.prepend(reviewPrePreLastDuplicate,reviewPreLastDuplicate,reviewLastDuplicate);
-    reviewContainerInner.append(reviewFirstDuplicate,reviewSecondDuplicate,reviewThirdDuplicate);
+    let reviewCounter = objectsOnPage;
+    // const reviewFirstDuplicate = reviewElements[0].cloneNode(true);
+    // const reviewSecondDuplicate = reviewElements[1].cloneNode(true);
+    // const reviewThirdDuplicate = reviewElements[2].cloneNode(true);
+    // const reviewPrePreLastDuplicate  = reviewElements[reviewElements.length - 3].cloneNode(true);
+    // const reviewPreLastDuplicate  = reviewElements[reviewElements.length - 2].cloneNode(true);
+    // const reviewLastDuplicate = (reviewElements[reviewElements.length - 1]).cloneNode(true);
+    // reviewContainerInner.prepend(reviewPrePreLastDuplicate,reviewPreLastDuplicate,reviewLastDuplicate);
+    // reviewContainerInner.append(reviewFirstDuplicate,reviewSecondDuplicate,reviewThirdDuplicate);
     
+    reviewElements.forEach((element)=>{
+        element.style.width = `calc(var(--review-width)/${objectsOnPage})`;
+    })
+
+    function cloneElements(massive, times, containerToAppend) {
+        for (let i = 0; i < times; i++) {
+          let appendElement = massive[i].cloneNode(true);
+          containerToAppend.append(appendElement);
+        }
+        for (let k = 1; k <= times;k++){
+          let prependElement = massive[massive.length - k ].cloneNode(true);
+          containerToAppend.prepend(prependElement);
+        }
+    }
+
+    cloneElements(reviewElements, objectsOnPage, reviewContainerInner);
+
+
+
     let reviewInterval;
     const reviewIntervalTime = 10000;
 
@@ -151,18 +174,18 @@ const reviewBlock = () => {
     reviewSlide();
     
     const nextReviewBlock = () => {
-        clearInterval(reviewInterval);
-        reviewInterval = setInterval(nextReviewBlock, reviewIntervalTime);
-        if (reviewCounter >= reviewElementsLength + 2){
+        if (reviewCounter >= reviewElementsLength + objectsOnPage - 1){
             return 0;
         }
+        clearInterval(reviewInterval);
+        reviewInterval = setInterval(nextReviewBlock, reviewIntervalTime);
         reviewContainerInner.style.transition = reviewTransition;
         reviewCounter++;
         console.log(reviewCounter)
         reviewSlide();
         reviewContainerInner.addEventListener('transitionend', () =>{
-            if (reviewCounter == reviewElementsLength + 2){
-                reviewCounter = 2;
+            if (reviewCounter == reviewElementsLength + objectsOnPage -1){
+                reviewCounter = objectsOnPage - 1;
                 reviewContainerInner.style.transition = 'none';
                 reviewSlide();
                 return 0;
@@ -173,11 +196,11 @@ const reviewBlock = () => {
     
 
     const previousReviewBlock = () => {
-        clearInterval(reviewInterval);
-        reviewInterval = setInterval(nextReviewBlock, reviewIntervalTime);
         if (reviewCounter <= 0){
             return 0;
         }
+        clearInterval(reviewInterval);
+        reviewInterval = setInterval(nextReviewBlock, reviewIntervalTime);
         reviewContainerInner.style.transition = reviewTransition;
         reviewCounter--;
         console.log(reviewCounter);
