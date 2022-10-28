@@ -115,9 +115,15 @@ questionAndAnwer();
 
 // slider triple starts
 const reviewBlock = () => {
-    let objectsOnPage = 2;
+    let objectsOnPage = 4;
     if (window.innerWidth < 500){
         objectsOnPage = 1;
+    }
+    else if (window.innerWidth < 900){
+        objectsOnPage = 2;
+    }
+    else if (window.innerWidth < 1366){
+        objectsOnPage = 3;
     }
     const reviewButtonLeft = document.querySelector('.review-button-left');
     const reviewButtonRight = document.querySelector('.review-button-right');
