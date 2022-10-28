@@ -386,6 +386,10 @@ header{
     line-height:30px;
 }
 
+.qa-question:hover{
+    transform: scale(1.04);
+}
+
 
 .qa-text{
  
