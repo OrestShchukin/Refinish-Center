@@ -114,7 +114,7 @@ questionAndAnwer();
 
 
 // slider triple starts
-const reviewBlock = () => {
+const reviewBlock = (buttonLeft,buttonRight,container, containerInner, element) => {
     let objectsOnPage = 4;
     if (window.innerWidth < 500){
         objectsOnPage = 1;
@@ -125,11 +125,11 @@ const reviewBlock = () => {
     else if (window.innerWidth < 1366){
         objectsOnPage = 3;
     }
-    const reviewButtonLeft = document.querySelector('.review-button-left');
-    const reviewButtonRight = document.querySelector('.review-button-right');
-    const reviewContainer = document.querySelector('.review-container');
-    const reviewContainerInner = document.querySelector('.review-container-inner');
-    let reviewElements = document.querySelectorAll('.review-element');
+    const reviewButtonLeft = document.querySelector(buttonLeft);
+    const reviewButtonRight = document.querySelector(buttonRight);
+    const reviewContainer = document.querySelector(container);
+    const reviewContainerInner = document.querySelector(containerInner);
+    let reviewElements = document.querySelectorAll(element);
     const reviewSlidingWidth = (reviewContainer.clientWidth)/objectsOnPage;
     let reviewElementsLength = reviewElements.length;
 
@@ -225,6 +225,6 @@ const reviewBlock = () => {
     reviewButtonLeft.addEventListener('click', previousReviewBlock);
     nextReviewBlock();
 }
-reviewBlock();
+reviewBlock('.review-button-left','.review-button-right','.review-container','.review-container-inner','.review-element');
 
 // slider triple ends
