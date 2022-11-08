@@ -7,8 +7,13 @@ const burgerOpen = () =>{
     const navOptionMenu = document.querySelector('.nav-option-menu-selector');
     const navExploreMoreList = document.querySelector('.nav-explore-more-list');
 
+    if (body.clientWidth > 758){
+        return 0;
+    }
+
 
     function navToggleClasses () {
+        navExploreMoreList.classList.remove('nav-explore-more-list-active')
         nav.classList.toggle('nav-active');
         burger.classList.toggle('burger-active'); 
         navBackgroundFull.classList.toggle('nav-background-full-active');
@@ -20,20 +25,26 @@ const burgerOpen = () =>{
 
     burger.addEventListener('click', navToggleClasses);
 
+
+
     navLinks.forEach((element) =>{
         if(element.classList.contains('nav-option-menu')){
             return 0;
         }
         element.addEventListener('click', navToggleClasses)
     })
-    navBackgroundFull.addEventListener('click', () =>{     
-        navToggleClasses();
-    });
+
+
 
     navOptionMenu.addEventListener('click', () =>{
         navExploreMoreList.classList.toggle('nav-explore-more-list-active')
     });
-    
+
+
+
+    navBackgroundFull.addEventListener('click', () =>{     
+        navToggleClasses();
+    }); 
 }
 burgerOpen();
 // Burger code ended;
@@ -46,8 +57,10 @@ const gallerySliding = () =>{
     const prevBtn = document.querySelector('.gallery-button-left');
     const nextBtn = document.querySelector('.gallery-button-right');
     
+    if (!galleryContainerInner){
+        return 0;
+    }
     const gallerySize = galleryElements[0].clientWidth;
-    console.log(`The width is ${gallerySize} px`);
     let galleryCounter = 1;
     
     let sliderInterval;
@@ -62,7 +75,7 @@ const gallerySliding = () =>{
         };
         galleryContainerInner.style.transition = galleryTransition;
         galleryCounter--;
-        console.log(galleryCounter);
+        // console.log(galleryCounter);
         galleryContainerInner.style.transform = 'translateX(' + (-gallerySize * galleryCounter) +'px)';
         galleryContainerInner.addEventListener('transitionend', () => {
             if(galleryCounter == 0){
@@ -81,7 +94,7 @@ const gallerySliding = () =>{
         };
         galleryContainerInner.style.transition = galleryTransition;
         galleryCounter++;
-        console.log(galleryCounter);
+        // console.log(galleryCounter);
         galleryContainerInner.style.transform = 'translateX(' + (-gallerySize * galleryCounter) +'px)';
         prevBtn.addEventListener('click', prevImage);
         galleryContainerInner.addEventListener('transitionend', () =>{
@@ -105,16 +118,14 @@ const questionAndAnwer =() => {
     qaBlockText.forEach((element) =>{
         element.addEventListener('click', () =>{
             element.classList.toggle('qa-text-active');
-            console.log("It came hereeee");
         })
-        
     })
 }
 questionAndAnwer();
 
 
 // slider triple starts
-const reviewBlock = (buttonLeft,buttonRight,container, containerInner, element) => {
+const reviewBlock = (buttonLeft,buttonRight,container, containerInner, element, setObjectsOnPage) => {
     let objectsOnPage = 4;
     if (window.innerWidth < 500){
         objectsOnPage = 1;
@@ -125,26 +136,26 @@ const reviewBlock = (buttonLeft,buttonRight,container, containerInner, element) 
     else if (window.innerWidth < 1366){
         objectsOnPage = 3;
     }
+    if (setObjectsOnPage){
+        objectsOnPage = setObjectsOnPage;
+    }
     const reviewButtonLeft = document.querySelector(buttonLeft);
     const reviewButtonRight = document.querySelector(buttonRight);
     const reviewContainer = document.querySelector(container);
     const reviewContainerInner = document.querySelector(containerInner);
     let reviewElements = document.querySelectorAll(element);
+
+    if(!reviewContainer){
+        return 0;
+    }
+
     const reviewSlidingWidth = (reviewContainer.clientWidth)/objectsOnPage;
     let reviewElementsLength = reviewElements.length;
-
     let reviewCounter = objectsOnPage;
-    // const reviewFirstDuplicate = reviewElements[0].cloneNode(true);
-    // const reviewSecondDuplicate = reviewElements[1].cloneNode(true);
-    // const reviewThirdDuplicate = reviewElements[2].cloneNode(true);
-    // const reviewPrePreLastDuplicate  = reviewElements[reviewElements.length - 3].cloneNode(true);
-    // const reviewPreLastDuplicate  = reviewElements[reviewElements.length - 2].cloneNode(true);
-    // const reviewLastDuplicate = (reviewElements[reviewElements.length - 1]).cloneNode(true);
-    // reviewContainerInner.prepend(reviewPrePreLastDuplicate,reviewPreLastDuplicate,reviewLastDuplicate);
-    // reviewContainerInner.append(reviewFirstDuplicate,reviewSecondDuplicate,reviewThirdDuplicate);
+
     
     reviewElements.forEach((element)=>{
-        element.style.width = `calc(var(--review-width)/${objectsOnPage})`;
+        element.style.width = reviewContainer.clientWidth/objectsOnPage + "px";
     })
 
     function cloneElements(massive, times, containerToAppend) {
@@ -187,7 +198,7 @@ const reviewBlock = (buttonLeft,buttonRight,container, containerInner, element) 
         reviewInterval = setInterval(nextReviewBlock, reviewIntervalTime);
         reviewContainerInner.style.transition = reviewTransition;
         reviewCounter++;
-        console.log(reviewCounter)
+        // console.log(reviewCounter)
         reviewSlide();
         reviewContainerInner.addEventListener('transitionend', () =>{
             if (reviewCounter == reviewElementsLength + objectsOnPage -1){
@@ -209,7 +220,7 @@ const reviewBlock = (buttonLeft,buttonRight,container, containerInner, element) 
         reviewInterval = setInterval(nextReviewBlock, reviewIntervalTime);
         reviewContainerInner.style.transition = reviewTransition;
         reviewCounter--;
-        console.log(reviewCounter);
+
         reviewSlide();
         reviewContainerInner.addEventListener('transitionend', () =>{
             if (reviewCounter == 0){
@@ -226,5 +237,34 @@ const reviewBlock = (buttonLeft,buttonRight,container, containerInner, element) 
     nextReviewBlock();
 }
 reviewBlock('.review-button-left','.review-button-right','.review-container','.review-container-inner','.review-element');
+reviewBlock('.restore-slider-button-left', '.restore-slider-button-right','.restore-slider-container','.restore-slider-container-inner','.restore-slider-element',1)
 
 // slider triple ends
+
+// sidePagesGallery
+const restoreGallery = () => {
+    const textBlock = document.querySelector('.restore-text-block');
+    const restoreImageContainer = document.querySelector('.restore-image-block');
+    const restoreElements = document.querySelectorAll('.restore-image-container');
+    const restoreELementsOuter = document.querySelectorAll('.restore-image-container-outer');
+
+    if (!restoreImageContainer){
+        return 0;
+    }
+    restoreImageContainer.style.height = `${textBlock.clientHeight}px`;
+    restoreElements.forEach((element)=>{
+         element.style.height = `${textBlock.clientHeight}px`;
+         console.log(textBlock.clientHeight)
+    });
+
+    function showCards(){
+        for(let i =0; i < restoreELementsOuter.length; i++){
+
+        }
+    }
+
+}
+
+restoreGallery();
+
+// sidePagesGallery
