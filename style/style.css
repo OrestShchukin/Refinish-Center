@@ -17,7 +17,6 @@
     --main-headling-size: 1.3rem;
     --header-height: 90px;
     --header-padding: 2vw ;
-    
     --nav-active-width: 60vw;
     --gallery-height:100vh;
     --gallery-height-half:50vh;
@@ -44,8 +43,6 @@ body{
 main{
     width: 100%;
     text-decoration: none;
-    min-height: 3000px;
-
 }
 
 a{
@@ -113,7 +110,6 @@ header{
     position: absolute;
     left: 50%;
     transform: translate(-50%, 10px);
- 
     bottom: 0;
     content: "";
     width: 0;
@@ -363,165 +359,6 @@ header{
 }
 /* About us container ends */
 
-/* question and answer starts */
-.question-answer-block{
-    display: grid;
-    grid-template-columns: 40% 1fr;
-    grid-gap: 1vw;;
-    padding: 0 2rem;
-}
-.qa-question{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    overflow: hidden;
-    background-color: black;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
-.qa-question h4{
-    line-height:30px;
-}
-
-.qa-question:hover{
-    transform: scale(1.04);
-}
-
-
-.qa-text{
- 
-    display: none;
-}
-
-.qa-text-active .qa-text{
-   display: block;
-}
-
-.qa-img{
-    background:  center/cover url(https://images.unsplash.com/photo-1551522435-a13afa10f103?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXV0byUyMGdhcmFnZXxlbnwwfHwwfHw%3D&w=1000&q=80);
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    box-shadow:  0.2px 0.1px 0.1em black;
-}
-
-/* question and answer ends */
-
-/* Slider triple starts */
-.review-container{
-    position: relative;
-    display:block;
-    margin: 0 auto;
-    width: var(--review-width);
-    overflow: hidden;
-}
-
-.review-container-inner{
-    display: inline-flex;
-    transition: none;
-}
-
-
-.review-element{
-    display: inline-flex;
-    width: calc(var(--review-width)/3);
-    padding: 20px;
-}
-
-.review-element-inner{
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    border-radius: 10px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-}
-
-.review-image-box{
-    display: flex;
-    align-items: center;
-    max-width: 100%;
-    border-radius: 10px;
-    background-color: white;
-    overflow: hidden;
-}
-
-.review-image-box img{
-    width: 100%;
-}
-
-
-.review-button{
-    position: absolute;
-    cursor: pointer;
-    z-index: 2;
-}
-
-.review-button-right{
-    right: 0px;
-}
-.review-button-left{
-    left: 0px;
-}
-
-.review-more-button{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 60%;
-    height: 40px;
-    background-color: #3eae99d0;
-    border-radius: 10px;
-    margin: 5px;
-    align-self: flex-end;
-    transition: all .15s linear ;
-    box-shadow: 0;
-    overflow: hidden;
-}
-.review-more-button:after{
-    position: absolute;
-    left: 0;
-    top: 0;
-    content: " ";
-    width: 100%;
-    height: 100%;
-    opacity: 0.4;
-    background-color: white;
-    transform: translateY(-100%);
-    transition: all .15s cubic-bezier(0.075, 0.82, 0.165, 1) 0.12s ;
-}
-
-.review-more-button:before{
-    transform: translateY(100%);
-}
-.review-more-button:hover{
-    background-color: #3eae99ed;
-    color: black;
-}
-
-.review-more-button:hover:after{
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.review-more-button p{
-    z-index: 10;
-    color: white;
-    transition: all .15s linear;
-}
-.review-more-button:hover p{
-    color: black;
-}
-/* Slider triple ends */
-
-
-
 /* bubbles-section */
 .bubbles{
     background-color: black;
@@ -544,7 +381,6 @@ header{
     justify-content: center;
     flex-direction: column;
 }
-
 
 .bubble{
     height: 8vh;
@@ -584,8 +420,444 @@ header{
 .bubbles-text{
     padding: 30px;
 }
-
 /* bubbles-section ends */
+
+/* question and answer starts */
+.question-answer-block{
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    grid-gap: 1vw;;
+    padding: 0 2rem;
+}
+.qa-question{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow: hidden;
+    background-color: black;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.qa-question h4{
+    line-height:30px;
+}
+.qa-question:hover{
+    transform: scale(1.04);
+}
+
+
+.qa-text{
+ 
+    display: none;
+}
+
+.qa-text-active .qa-text{
+   display: block;
+}
+
+.qa-img{
+    background:  center/cover url(https://images.unsplash.com/photo-1551522435-a13afa10f103?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXV0byUyMGdhcmFnZXxlbnwwfHwwfHw%3D&w=1000&q=80);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow:  0.2px 0.1px 0.1em black;
+}
+
+/* question and answer ends */
+
+/* Slider triple starts */
+.slider-container{
+    position: relative;
+    display:block;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 100%;
+}
+
+.slider-container-inner{
+    display: inline-flex;
+    transition: none;
+}
+
+.slider-element{
+    display: inline-flex;
+    width: 100%;
+}
+
+.slider-button{
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.slider-button-right{
+    right: 0px;
+}
+
+.slider-button-left{
+    left: 0px;
+}
+
+/* Slider triple ends */
+
+
+/* review styles */
+.review-container{
+    width: var(--review-width);
+}
+
+.review-element{
+    width: calc(var(--review-width)/3);
+    padding: 20px;
+}
+
+.review-element-inner{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.review-image-box{
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    border-radius: 10px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.review-image-box img{
+    width: 100%;
+}
+
+.review-more-button{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 60%;
+    height: 40px;
+    background-color: #3eae99d0;
+    border-radius: 10px;
+    margin: 5px;
+    align-self: flex-end;
+    transition: all .15s linear ;
+    box-shadow: 0;
+    overflow: hidden;
+}
+.review-more-button:after{
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: " ";
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-color: white;
+    transform: translateY(-100%);
+    transition: all .15s cubic-bezier(0.075, 0.82, 0.165, 1) 0.12s ;
+}
+
+.review-more-button:before{
+    transform: translateY(100%);
+}
+.review-more-button:hover{
+    background-color: #3eae99ed;
+    color: black;
+    scale: 1.02;
+}
+
+.review-more-button:hover:after{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.review-more-button p{
+    z-index: 10;
+    color: white;
+    transition: all .15s linear;
+}
+.review-more-button:hover p{
+    color: black;
+}
+
+/* reviews ends */
+
+/*                  SIDE PAGES                  */
+
+
+/* restore slider */
+
+.restore-slider-darkener{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:400px;
+    z-index: 1;
+    background-color: #000000;
+    opacity: 0.5;
+    
+}
+
+.restore-slider-container{
+    width: 100vw;
+    height: 400px;
+    background-color: #000000;
+}
+.restore-slider-element{
+    height: 400px;
+    background-color: #00252c;
+}
+
+.restore-slider-first{
+    background: center/cover url("https://auto-storica.com/wp-content/uploads/2021/04/instagram-photo-17-scaled.jpg");
+}
+.restore-slider-second{
+    background: center/cover url("https://images.squarespace-cdn.com/content/v1/5e07498cb6300106f253ab1d/1616251927904-QVX3961XR1EI2BHM6ESN/DSC04850.jpg");
+}
+.restore-slider-third{
+    background: center/cover url("https://s30740.pcdn.co/wp-content/uploads/2020/06/How-Much-Does-A-Classic-Car-Restoration-Cost-.jpg");
+}
+.restore-slider-fourth{
+    background: center/cover url("https://media.ed.edmunds-media.com/non-make/carcare/carcare_209114_717.jpg");
+}
+
+
+.restore-slider-container h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    font-family: 'Roboto', sans-serif;
+    font-size: 3rem;
+    text-shadow:  0.2px 0.1px 0.1em black;
+    opacity: 0.9;
+}
+
+.restore-slider-button-right, .restore-slider-button-left{
+    display: none;
+}
+/* restore slider ends */
+
+/* restore-indormation block */
+.restore-information-block{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    /* padding: 20px; */
+}
+.restore-text-block{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    padding: 10px;
+}
+.restore-text-block h3{
+    text-align: center;
+    padding: 20px;
+}
+.restore-text-element{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.restore-text-element ul{
+    list-style: upper-alpha;
+    padding: 20px;
+    align-self: flex-start;
+}
+
+
+.restore-image-block{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    clip-path: polygon(10% 0, 85% 0, 75% 100%, 0% 100%);
+
+}
+
+.restore-image-container{
+    width: 100%;
+    clip-path: polygon(10% 0, 85% 0, 75% 100%, 0% 100%); 
+}
+
+.restore-image-container-outer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    filter: drop-shadow(0 15px 30px rgb(0, 0, 0));
+    transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1) .1s;
+}
+
+.restore-image-container-first{
+    background: center/cover url("https://noequal.co/wp-content/uploads/IMG_8669.jpg");
+}
+.restore-image-container-second{
+    background: center/cover url("https://i.redd.it/1c7h8e0i2cj61.jpg");
+}
+.restore-image-container-outer:nth-of-type(2){
+    transform: translateX(60%);
+}
+.restore-image-container-third{
+    background: center/cover url("https://www.motortrend.com/uploads/sites/25/2020/09/Top-20-JDM-Nissans-Hirokk-Koga-93-S13-Onevia-01.jpg");
+}
+.restore-image-container-outer:nth-of-type(3){
+    transform: translateX(68%);
+}
+.restore-image-container-outer:hover{
+    transform: translateX(10%);
+}
+.restore-image-container-outer:nth-of-type(3):hover{
+    transform: translateX(18%);
+}
+.restore-image-container-outer:nth-of-type(1):hover{
+    transform: translateX(0);
+}
+
+/* question form starts */
+.form-section-inner{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+.form-container{
+    padding: 10px;
+    background-color: black;
+    margin: 10px;
+    border-radius: 20px;
+    /* border: 2px solid #3EAE99 ; */
+}
+
+.input-box{
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    margin: 20px;
+
+}
+form textarea{
+    background-color: #00252c00;
+    resize: none;
+}
+.input-box input, .input-box textarea{
+    background-color: #00252c00;
+    padding: 10px;
+    border:3px solid #3EAE99;
+    border-radius: 20px;
+    transition: all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.input-box textarea ~ label{
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    transform: translateY(0);
+    pointer-events: none;
+    transition: all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    
+}
+
+.input-box input::placeholder{
+    visibility: hidden;
+}
+
+form textarea{
+    min-height: 150px;
+}
+
+.input-box input:focus, .input-box textarea:focus{
+    outline: none;
+    border: 3px solid #1a5348;
+}
+.input-box input:focus::placeholder{
+    visibility: visible;
+}
+
+.input-box input:focus ~ label, .input-box input:required:valid ~label{
+    transform: translateY(-160%) scale(0.9);
+    background-color: black;
+    border: 1px solid #1a5348;
+    border-radius: 5px;
+    padding: 0 0.2em;
+    /* color: #1a5348; */
+    color: #ffffff;
+}
+
+.input-box textarea:focus ~ label, .input-box textarea:required:valid ~label{
+    transform: translateY(-110%) scale(0.9);
+    background-color: black;
+    border: 1px solid #1a5348;
+    border-radius: 5px;
+    padding: 0 0.2em;
+    /* color: #1a5348; */
+}
+
+
+.input-box textarea{
+    border-radius: 3;
+}
+
+
+
+/* qusetion form ends */
+
+
+/* footer starts */
+footer{
+    width: 100%;
+}
+
+.footer-inner{
+    width: 100%;
+    min-height: 200px;
+    background-color: #3EAE99;
+    padding: 30px;
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 60% 1fr;
+}
+.footer-text-block{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.footer-text-block li{
+    padding: 10px 30px;
+}
+.footer-google-map iframe{
+    height: 200px;
+    width: 100%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+/* footer ends */
 
 @media screen and (max-width: 758px){
     .bubbles-inner{
@@ -604,6 +876,7 @@ header{
         display: block;
     }
     
+
     nav{
         position: absolute;
         opacity: 0;
@@ -680,6 +953,7 @@ header{
         background-color: var(--burger-active-color);
         z-index: -1;
     }
+
     .burger-active .burger-first{
         transform: rotate(45deg) translate(4px,10px);
     }
@@ -704,6 +978,34 @@ header{
     .question-answer-block{
         grid-template-columns: 1fr;
     }
+
+
+
+
+    .footer-inner{
+        grid-template-columns: 1fr;
+    }
+    .footer-text-block{
+        flex-direction: column;
+    }
+    .footer-text-block-inner{
+        padding: 5px;
+    }
+
+    .restore-information-block{
+        grid-template-columns: 1fr;   
+    }
+    .restore-image-block{
+        display: none;
+    }
+    .restore-slider-container h1{
+        text-align: center;
+    }
+    
+    .form-section-inner{
+        grid-template-columns: 1frKO;
+    }
+
 }
 
 @media screen and (max-width: 380px){
@@ -718,19 +1020,6 @@ header{
 
 /* Animated Background */
 
-
-.context {
-    width: 100%;
-    position: absolute;
-    top:50vh;
-    
-}
-
-.context h1{
-    text-align: center;
-    color: #fff;
-    font-size: 50px;
-}
 
 
 .background-animated{
@@ -840,7 +1129,6 @@ header{
     animation-delay: 0s;
     animation-duration: 11s;
 }
-
 
 
 @keyframes background-animated-animation {
